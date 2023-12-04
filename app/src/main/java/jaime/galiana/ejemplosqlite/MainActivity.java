@@ -100,13 +100,16 @@ public class MainActivity extends AppCompatActivity {
                     //guardar en la base de dateixons
                     try {
                         daoProductos.create(producto);
+                        int id = daoProductos.extractId(producto);
+
+                        producto.setId(id);
+
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
                 }
             }
         });
-
         return builder.create();
     }
 }
